@@ -102,13 +102,13 @@ fn player_movement(
     if input.pressed(KeyCode::Right) {
         v.x += 1.0;
     }
-    if input.just_pressed(KeyCode::E) {
+    if input.pressed(KeyCode::E) {
         r -= 1.0;
     }
-    if input.just_pressed(KeyCode::Q) {
+    if input.pressed(KeyCode::Q) {
         r += 1.0
     }
-    transform.rotate_z(r * std::f32::consts::PI);
+    transform.rotate_z(r * time.delta_seconds());
     match v.try_normalize() {
         None => (),
         Some(val) => {
